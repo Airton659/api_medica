@@ -1,5 +1,5 @@
-from rest_framework import viewsets
-from rest_framework import permissions
+from rest_framework import viewsets, permissions
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Profissional, Consulta
 from .serializers import ProfissionalSerializer, ConsultaSerializer
 from rest_framework.response import Response
@@ -14,6 +14,10 @@ class ConsultaViewSet(viewsets.ModelViewSet):
     queryset = Consulta.objects.all()
     serializer_class = ConsultaSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]  
+    filterset_fields = ['profissional_id']  
+    ordering_fields = ['data']
+    ordering = ['data']
 
     def perform_create(self,serializer):
         serializer.save()
