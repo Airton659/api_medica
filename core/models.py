@@ -9,3 +9,10 @@ class Profissional (models.Model):
 
     def __str__(self):
         return self.nome_completo
+    
+class Consulta(models.Model):
+    data = models.DateTimeField()
+    profissional = models.ForeignKey(Profissional, on_delete=models.CASCADE, related_name="consultas" )
+
+    def __str__(self):
+        return f"Consulta de {self.profissional.nome_completo} em {self.data}"
