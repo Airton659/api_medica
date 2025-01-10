@@ -13,7 +13,7 @@ class ProfissionalViewSet(viewsets.ModelViewSet):
 class ConsultaViewSet(viewsets.ModelViewSet):
     queryset = Consulta.objects.all()
     serializer_class = ConsultaSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]  
     filterset_fields = ['profissional_id']  
     ordering_fields = ['data']

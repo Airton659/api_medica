@@ -45,7 +45,11 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',  # Habilita a interface de navegação
+        'rest_framework.renderers.BrowsableAPIRenderer',  
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',  
     ],
 }
 
@@ -86,11 +90,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'api_medica',  # Nome do banco de dados
-        'USER': 'api_user',    # Usuário do banco
-        'PASSWORD': '123456',   # Senha do usuário
-        'HOST': 'localhost',   # Host do PostgreSQL
-        'PORT': '5432',        # Porta padrão do PostgreSQL
+        'NAME': 'dbname',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': 'db',  # Nome do serviço no Docker Compose
+        'PORT': '5432',
     }
 }
 
